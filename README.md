@@ -493,4 +493,91 @@ curl http://127.0.0.1:8080/products
     "empty": false
 }
 ```
-
+ with parametars
+ ```
+ curl http://localhost:8080/products/?size=3&page=3&sort=name,desc
+ {
+    "content": [
+        {
+            "productId": 934,
+            "productCode": "R683",
+            "name": "Yeast Dry - Fermipan",
+            "quantity": 934,
+            "price": 56.4,
+            "likedSuppliers": []
+        },
+        {
+            "productId": 217,
+            "productCode": "V272XXD",
+            "name": "Yeast Dry - Fermipan",
+            "quantity": 217,
+            "price": 90.5,
+            "likedSuppliers": []
+        },
+        {
+            "productId": 819,
+            "productCode": "N393",
+            "name": "Yeast Dry - Fermipan",
+            "quantity": 819,
+            "price": 36.71,
+            "likedSuppliers": []
+        }
+    ],
+    "pageable": {
+        "sort": {
+            "unsorted": false,
+            "sorted": true,
+            "empty": false
+        },
+        "pageNumber": 3,
+        "pageSize": 3,
+        "offset": 9,
+        "paged": true,
+        "unpaged": false
+    },
+    "totalPages": 334,
+    "last": false,
+    "totalElements": 1000,
+    "first": false,
+    "size": 3,
+    "number": 3,
+    "sort": {
+        "unsorted": false,
+        "sorted": true,
+        "empty": false
+    },
+    "numberOfElements": 3,
+    "empty": false
+}
+ ```
+ or one product at a time
+ ```
+ curl http://localhost:8080/products/1
+ {
+    "productId": 1,
+    "productCode": "O356XX9",
+    "name": "Basil - Seedlings Cookstown",
+    "quantity": 1,
+    "price": 68.24,
+    "likedSuppliers": [
+        {
+            "supplierId": 2,
+            "name": "Aibox",
+            "phone": "4712356514"
+        },
+        {
+            "supplierId": 1,
+            "name": "Thoughtmix",
+            "phone": "6418597311"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "http://localhost:8080/products/1"
+        },
+        "suppliers": {
+            "href": "http://localhost:8080/products"
+        }
+    }
+}
+ ```
