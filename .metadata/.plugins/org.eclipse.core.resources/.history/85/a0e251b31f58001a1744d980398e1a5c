@@ -1,0 +1,30 @@
+package com.pink.screw.java.controllers;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.hateoas.RepresentationModel;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.pink.screw.java.entities.Person;
+
+public class Resources extends RepresentationModel<Resources> {
+	private final List<Person> producers;
+
+	@JsonCreator
+	public Resources(@JsonProperty("producers") List<Person> producers) {
+
+		this.producers = producers;
+	}
+
+	public Resources(@JsonProperty("producers") Page<Person> producers2) {
+		this.producers = null;
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Person> getContent() {
+		return producers;
+	}
+
+}

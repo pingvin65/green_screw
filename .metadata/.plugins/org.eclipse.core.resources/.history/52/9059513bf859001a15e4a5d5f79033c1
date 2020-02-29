@@ -1,0 +1,11 @@
+package com.green.screw.java.errors;
+
+public class ScrewServerException extends RuntimeException {
+
+
+
+	public ScrewServerException(String message) {
+		
+		super(message);
+	}
+}

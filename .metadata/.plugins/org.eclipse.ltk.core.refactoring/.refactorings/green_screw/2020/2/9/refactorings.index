@@ -1,0 +1,20 @@
+1582754495330	Rename package 'com.pink.screw.java.repository'
+1582766852482	Rename type 'EmployeeNotFoundAdvice'
+1582766911655	Rename type 'EmployeeNotFoundException'
+1582768111486	Delete element
+1582768408339	Delete element
+1582778080305	Rename package 'com.pink.screw.java.payroll'
+1582833154162	Copy compilation unit
+1582833313141	Copy compilation unit
+1582853952997	Rename type 'SupplierNotFoundAdvice'
+1582853979251	Rename type 'SupplierNotFoundException'
+1582856593310	Rename package 'com.pink.screw.java'
+1582856620041	Rename package 'com.pink.screw.java.controllers'
+1582856638157	Rename package 'com.pink.screw.java.entities'
+1582856656350	Rename package 'com.pink.screw.java.errrors'
+1582856669087	Rename package 'com.greenk.screw.java.errrors'
+1582856692089	Rename package 'com.pink.screw.java.models'
+1582856712490	Rename package 'com.pink.screw.java.repositories'
+1582856732897	Rename package 'com.pink.screw.java.validators'
+1582857042999	Rename package 'com.green.screw.java.errrors'
+1582873277215	Copy compilation unit

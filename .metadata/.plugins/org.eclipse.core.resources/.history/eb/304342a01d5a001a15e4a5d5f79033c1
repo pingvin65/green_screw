@@ -1,0 +1,58 @@
+package com.green.screw.java.errors;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.mapping.PropertyReferenceException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ControllerAdvice
+@RequestMapping(produces = "application/vnd.error+json")
+public class ScrewNotFoundAdvice {
+
+	@ResponseBody
+	@ExceptionHandler({org.springframework.data.mapping.PropertyReferenceException.class}) 
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	ErrorDetail serverHandler(HttpServletRequest request, PropertyReferenceException ex) {
+		System.out.println(ex.getPropertyName());
+		ErrorDetail error = new ErrorDetail();
+	    error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+	    error.setMessage("Server error, no Property Name - " + ex.getPropertyName().toString());
+	    error.setUrl(request.getRequestURL().toString());
+	    error.setQuery(request.getQueryString());
+	    return error;
+
+	}
+	
+	@ResponseBody
+	@ExceptionHandler({EmptyResultDataAccessException.class}) 
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	ErrorDetail serverDelHandler(HttpServletRequest request, EmptyResultDataAccessException ex) {
+		System.out.println(ex.getMessage());
+		ErrorDetail error = new ErrorDetail();
+	    error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+	    error.setMessage("Server error, no Property Name - " + ex.getMessage());
+	    error.setUrl(request.getRequestURL().toString());
+	    error.setQuery(request.getQueryString());
+	    return error;
+
+	}
+	
+	@ResponseBody
+	@ExceptionHandler(ScrewNotFoundException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	ErrorDetail supplierNotFoundHandler(HttpServletRequest request, ScrewNotFoundException ex) {
+		ErrorDetail error = new ErrorDetail();
+		error.setStatus(HttpStatus.NOT_FOUND.value());
+		error.setMessage(ex.getMessage());
+		error.setUrl(request.getRequestURL().toString());
+		error.setQuery("");
+		return error;
+	}
+
+}

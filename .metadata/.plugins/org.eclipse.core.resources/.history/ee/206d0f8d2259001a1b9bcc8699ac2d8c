@@ -1,0 +1,78 @@
+package com.pink.screw.java.controllers;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.hateoas.EntityModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
+import com.pink.screw.java.entities.Person;
+import com.pink.screw.java.entities.SuppliersEntity;
+import com.pink.screw.java.errrors.SupplierNotFoundException;
+import com.pink.screw.java.repositories.SupplierRepository;;
+
+@RestController
+public class SupplierController {
+
+	private final SupplierRepository supplierRepository;
+
+	public SupplierController(SupplierRepository supplierRepository) {
+		this.supplierRepository = supplierRepository;
+	}
+
+	@GetMapping("/suppliers")
+	List<SuppliersEntity> all() {
+		return supplierRepository.findAll();
+	}
+
+	@GetMapping("/list")
+	public Page<SuppliersEntity> getAll(
+			@PageableDefault(size = 20, page = 0, sort = { "id" }, direction = Direction.ASC) Pageable pageable) {
+		return supplierRepository.findAll(pageable);
+
+	}
+
+	@PostMapping("/suppliers")
+	SuppliersEntity newEmployee(@RequestBody SuppliersEntity newSuppliers) {
+		return supplierRepository.save(newSuppliers);
+	}
+
+	@GetMapping("/suppliers/{id}")
+	EntityModel<SuppliersEntity> one(@PathVariable Long id) {
+		SuppliersEntity suppliersEntity = supplierRepository.findById(id)
+				.orElseThrow(() -> new SupplierNotFoundException(id));
+
+		return new EntityModel<>(suppliersEntity, linkTo(methodOn(SupplierController.class).one(id)).withSelfRel(),
+				linkTo(methodOn(SupplierController.class).all()).withRel("suppliers"));
+	}
+
+	@PutMapping("/suppliers/{id}")
+	SuppliersEntity replaceSupplier(@RequestBody SuppliersEntity newSuppliers, @PathVariable Long id) {
+
+		return supplierRepository.findById(id).map(supplier -> {
+			supplier.setName(newSuppliers.getName());
+			supplier.setPhone(newSuppliers.getPhone());
+
+			return supplierRepository.save(supplier);
+		}).orElseGet(() -> {
+			newSuppliers.setSupplierId(id);
+			return supplierRepository.save(newSuppliers);
+		});
+
+	}
+
+	@DeleteMapping("/suppliers/{id}")
+	void deleteSupplier(@PathVariable Long id) {
+		supplierRepository.deleteById(id);
+	}
+}

@@ -1,0 +1,5 @@
+package com.budget.home.accessingdatarest;
+
+public interface CategoryRepository {
+
+}

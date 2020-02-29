@@ -1,0 +1,8 @@
+spring.h2.console.enabled=true
+spring.datasource.name=screw
+
+#  for @RestController
+spring.data.web.pageable.max-page-size = 50
+
+# @RepositoryRestResource
+# spring.data.rest.max-page-size: 1000 

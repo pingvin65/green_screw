@@ -1,0 +1,5 @@
+package com.pink.screw.java.repository;
+
+public interface ProductRepository {
+
+}

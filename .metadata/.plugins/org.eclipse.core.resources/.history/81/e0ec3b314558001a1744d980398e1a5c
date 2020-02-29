@@ -1,0 +1,4 @@
+INSERT INTO person(firstName,lastName) VALUES('Jai Alai', 'jon');
+INSERT INTO person(firstName,lastName) VALUES('Stella Artois', 'Tom');
+INSERT INTO person(firstName,lastName) VALUES('Lagunitas IPA', 'Mo');
+COMMIT;

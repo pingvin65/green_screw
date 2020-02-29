@@ -1,0 +1,4 @@
+spring.h2.console.enabled=true
+spring.datasource.name=screw
+
+spring.data.rest.max-page-size=50

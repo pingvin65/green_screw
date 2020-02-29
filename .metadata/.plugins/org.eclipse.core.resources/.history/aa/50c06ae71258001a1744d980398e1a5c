@@ -1,0 +1,47 @@
+package com.pink.screw.java.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.rest.webmvc.RepositoryRestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.pink.screw.java.entities.Person;
+import com.pink.screw.java.repositories.PersonRepository2;
+
+
+
+
+@RepositoryRestController
+@RequestMapping("/scanners")
+public class PersonController2 {
+	private final PersonRepository2 repository;
+
+	@Autowired
+	public PersonController2(PersonRepository2 rep) {
+		repository = rep;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/search/listProducers") 
+    public @ResponseBody ResponseEntity<?> getProducers() {
+        List<Person> producers = (List<Person>) repository.findAll(); 
+
+        //
+        // do some intermediate processing, logging, etc. with the producers
+        //
+
+        Resources resources = new Resources(producers); 
+
+
+//        resources.add(linkTo(methodOn(PersonController2.class).getProducers()).withSelfRel()); 
+
+        // add other links as needed
+
+        return ResponseEntity.ok(resources); 
+    }
+
+}

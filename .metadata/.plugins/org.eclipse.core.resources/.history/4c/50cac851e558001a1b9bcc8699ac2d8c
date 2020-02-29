@@ -1,0 +1,9 @@
+package com.pink.screw.java.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.pink.screw.java.entities.SuppliersEntity;
+
+public interface SupplierRepository extends JpaRepository<SuppliersEntity, Long> {
+
+}

@@ -1,0 +1,9 @@
+package com.pink.screw.java.repository;
+
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+import com.pink.screw.java.entity.Product;
+
+public interface ProductRepository  extends PagingAndSortingRepository<Product, Integer>{
+
+}

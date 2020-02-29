@@ -1,0 +1,13 @@
+package com.green.screw.java.errors;
+
+public class ScrewServerException extends RuntimeException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -659145833196250171L;
+
+	public ScrewServerException(String message) {
+		
+		super(message);
+	}
+}

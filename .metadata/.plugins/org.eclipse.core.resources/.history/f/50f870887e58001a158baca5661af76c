@@ -1,0 +1,18 @@
+package com.pink.screw.java.repositories;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.NoRepositoryBean;
+
+import com.pink.screw.java.entities.Person;
+
+/* @RepositoryRestResource(collectionResourceRel = "people", path = "people") */
+//@Repository
+//@NoRepositoryBean
+public interface PersonRepository extends CrudRepository<Person, Long> {
+
+//  List<Person> findByLastName(@Param("name") String name);
+
+//  Page<Person> findAll(Pageable pageable);
+	
+
+}

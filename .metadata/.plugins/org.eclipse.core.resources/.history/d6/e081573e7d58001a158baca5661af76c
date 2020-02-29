@@ -1,0 +1,10 @@
+package com.pink.screw.java.controllers;
+
+import java.util.List;
+
+import com.pink.screw.java.entities.Person;
+
+public class Resources<T> {
+
+
+}

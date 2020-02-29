@@ -1,0 +1,5 @@
+package com.pink.screw.java.entities;
+
+public class Person {
+
+}
