@@ -1,9 +1,0 @@
-package com.pink.screw.java.repository;
-
-import org.springframework.data.repository.CrudRepository;
-
-import com.pink.screw.java.entity.Product;
-
-public interface ProductRepository  extends CrudRepository<Product, Integer>{
-
-}

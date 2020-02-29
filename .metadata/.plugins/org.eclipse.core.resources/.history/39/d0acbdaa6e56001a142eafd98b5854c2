@@ -1,4 +1,0 @@
-spring.jpa.hibernate.ddl-auto=update
-spring.datasource.url=jdbc:mysql://${MYSQL_HOST:localhost}:3306/pinkscrew
-spring.datasource.username=pinkscrew
-spring.datasource.password=pinkscrW25
